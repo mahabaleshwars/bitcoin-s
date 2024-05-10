@@ -3,7 +3,7 @@ env:
   COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
 
 on:
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   test:
@@ -12,7 +12,7 @@ jobs:
     if: "! contains(github.event.pull_request.labels.*.name, 'documentation')"
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Setup Scala
