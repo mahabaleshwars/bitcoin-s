@@ -12,7 +12,7 @@ jobs:
     if: "! contains(github.event.pull_request.labels.*.name, 'documentation')"
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Setup Scala
@@ -21,8 +21,6 @@ jobs:
           distribution: 'adopt'
           java-version: '21'
           cache: 'sbt'
-      - name: install sbt as workaround https://github.com/actions/setup-java/issues/627
-        run: brew install sbt
       - name: Cache
         uses: actions/cache@v3
         with:
